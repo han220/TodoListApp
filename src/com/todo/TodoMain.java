@@ -1,6 +1,5 @@
 package com.todo;
 
-import java.util.Scanner;
 
 import com.todo.dao.TodoList;
 import com.todo.menu.Menu;
@@ -9,17 +8,17 @@ import com.todo.service.TodoUtil;
 public class TodoMain {
 	
 	public static void start() {
-	
-		Scanner sc = new Scanner(System.in);
 		TodoList l = new TodoList();
+		
+		// Load Data
+		TodoUtil.loadList(l, "todolist.txt");
+		
 		boolean isList = false;
 		boolean quit = false;
 		do {
 			Menu.displaymenu();
 			isList = false;
-			String choice = sc.next();
-			switch (choice) {
-
+			switch (Menu.prompt()) {
 			case "add":
 				TodoUtil.createItem(l);
 				break;
@@ -57,11 +56,14 @@ public class TodoMain {
 				break;
 
 			default:
-				System.out.println("please enter one of the above mentioned command");
+				System.out.println("알 수 없는 명령어입니다.");
 				break;
 			}
 			
 			if(isList) l.listAll();
 		} while (!quit);
+		
+		// 파일 저장
+		TodoUtil.saveList(l, "todolist.txt");
 	}
 }
