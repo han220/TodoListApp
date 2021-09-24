@@ -39,6 +39,18 @@ public class TodoList {
 		}
 		System.out.println("총 " + cnt + "개의 항목을 찾았습니다.");
 	}
+	
+	public void findCategory(String niddle) {
+		int i = 1, cnt = 0;
+		for(TodoItem item : list) {
+			if(item.getCategory().contains(niddle)) {
+				System.out.println(item.print(i));
+				cnt++;
+			}
+			i++;
+		}
+		System.out.println("총 " + cnt + "개의 항목을 찾았습니다.");
+	}
 
 	void editItem(TodoItem t, TodoItem updated) {
 		int index = list.indexOf(t);
@@ -83,5 +95,14 @@ public class TodoList {
 			if (title.equals(item.getTitle())) return true;
 		}
 		return false;
+	}
+
+	public void listCategories() {
+		Set<String> category = new HashSet<>();
+		for (TodoItem item : list) {
+			category.add(item.getCategory());
+		}
+		System.out.println(String.join(" / ", category));
+		System.out.println("총 " + category.size() + "개의 카테고리가 등록되어 있습니다.");
 	}
 }

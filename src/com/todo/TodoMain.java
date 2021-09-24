@@ -56,8 +56,22 @@ public class TodoMain {
 				isList = true;
 				break;
 			
+			case "ls_date_desc":
+				l.sortByDate();
+				l.reverseList();
+				isList = true;
+				break;
+			
 			case "find":
 				l.findItem(String.join(" ", List.of(input).subList(1, input.length)));
+				break;
+			
+			case "find_cat":
+				l.findCategory(String.join(" ", List.of(input).subList(1, input.length)));
+				break;
+				
+			case "ls_cat":
+				l.listCategories();
 				break;
 
 			case "exit":
