@@ -1,6 +1,10 @@
 package com.todo;
 
 
+
+
+import java.util.List;
+
 import com.todo.dao.TodoList;
 import com.todo.menu.Menu;
 import com.todo.service.TodoUtil;
@@ -18,7 +22,8 @@ public class TodoMain {
 		do {
 			Menu.displaymenu();
 			isList = false;
-			switch (Menu.prompt()) {
+			String[] input = Menu.prompt();
+			switch (input[0]) {
 			case "add":
 				TodoUtil.createItem(l);
 				break;
@@ -49,6 +54,10 @@ public class TodoMain {
 			case "ls_date":
 				l.sortByDate();
 				isList = true;
+				break;
+			
+			case "find":
+				l.findItem(String.join(" ", List.of(input).subList(1, input.length)));
 				break;
 
 			case "exit":

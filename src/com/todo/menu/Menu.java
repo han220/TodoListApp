@@ -13,14 +13,15 @@ public class Menu {
 		System.out.println("ls_name_asc - sort the list by name");
 		System.out.println("ls_name_desc - sort the list by name ");
 		System.out.println("ls_date sort the list by date");
+		System.out.println("find [Keyword] - Find keyword in title or desc");
 		System.out.println("exit - exit");
 		
 	}
 
-	public static String prompt() {
+	public static String[] prompt() {
 		System.out.println("Enter your choice >");
 		Scanner s = new Scanner(System.in);
-		String in = s.next();
-		return in;
+		String in = s.nextLine();
+		return in.split(" ");
 	}
 }
