@@ -34,8 +34,8 @@ public class TodoList {
 			if(item.getTitle().contains(niddle) || item.getDesc().contains(niddle)) {
 				System.out.println(item.print(i));
 				cnt++;
-				i++;
 			}
+			i++;
 		}
 		System.out.println("총 " + cnt + "개의 항목을 찾았습니다.");
 	}
